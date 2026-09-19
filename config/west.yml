@@ -9,7 +9,7 @@ manifest:
     - name: beekeeb
       url-base: https://github.com/beekeeb
     - name: ollyak
-    url-base: https://github.com/ollyak
+      url-base: https://github.com/ollyak
   projects:
     - name: zmk
       remote: zmkfirmware
