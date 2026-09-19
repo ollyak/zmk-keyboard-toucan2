@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/geeksville
     - name: beekeeb
       url-base: https://github.com/beekeeb
+    - name: ollyak
+    url-base: https://github.com/ollyak
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -17,7 +19,7 @@ manifest:
       remote: caksoylar
       revision: v0.3
     - name: zmk_driver_azoteq
-      remote: beekeeb
+      remote: ollyak
       revision: main
     - name: zmk-input-zoom
       remote: beekeeb
