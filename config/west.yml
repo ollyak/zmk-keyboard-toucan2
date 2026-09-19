@@ -20,7 +20,7 @@ manifest:
       revision: v0.3
     - name: zmk_driver_azoteq
       remote: ollyak
-      revision: master
+      revision: main
     - name: zmk-input-zoom
       remote: beekeeb
       revision: main
