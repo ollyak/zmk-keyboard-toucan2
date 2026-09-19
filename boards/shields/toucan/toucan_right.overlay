@@ -77,6 +77,8 @@
         switch-xy;
         invert-scroll-y;
 
+        report-rate-active = <32>; // mouse rate
+
     };
 };
 
