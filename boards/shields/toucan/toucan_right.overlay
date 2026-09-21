@@ -77,7 +77,7 @@
         switch-xy;
         invert-scroll-y;
 
-        report-rate-active = <10>; // mouse rate: <10> 100Hz, <32> ~31 Hz, <16> ~62 Hz
+        // report-rate-active = <10>; // mouse rate: <10> 100Hz, <32> ~31 Hz, <16> ~62 Hz
 
     };
 };
