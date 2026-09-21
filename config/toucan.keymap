@@ -11,6 +11,10 @@
 // see `is_touching_processor` in boards/shields/toucan/toucan.dtsi
 #define MOU 4
 
+// Right-hand Hyper. Spelled out via APPLY_MODS because matrix_transform.h,
+// pulled in by toucan.dtsi ahead of this file, redefines RC() as RC(row, col).
+#define HYPER(key) APPLY_MODS((MOD_RCTL | MOD_RSFT | MOD_RALT | MOD_RGUI), key)
+
 &lt {
     quick-tap-ms = <200>;
 };
@@ -92,10 +96,10 @@
         adjust_layer {
             display-name = "ADJ";
             bindings = <
-&hold_boot 0 0   &kp RS(RA(RC(RG(Q))))  &kp RS(RA(RC(RG(W))))  &kp RS(RA(RC(RG(E))))  &kp RS(RA(RC(RG(R))))  &kp RS(RA(RC(RG(T))))  &studio_unlock  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp F11  &kp F12
-&none            &kp RS(RC(RA(RG(A))))  &kp RS(RA(RC(RG(S))))  &kp RS(RA(RC(RG(D))))  &kp RS(RA(RC(RG(F))))  &kp RS(RA(RC(RG(G))))  &bt BT_SEL 2    &none         &none       &none         &none    &hold_bt_clr BT_CLR 0
-&hold_reset 0 0  &kp RS(RA(RC(RG(Z))))  &kp RS(RA(RC(RG(X))))  &kp RS(RA(RC(RG(C))))  &kp RS(RA(RC(RG(V))))  &kp RS(RA(RC(RG(B))))  &bt BT_SEL 0    &none         &none       &none         &none    &hold_reset 0 0
-                                                               &trans                 &trans                 &trans                 &trans          &trans        &trans
+&hold_boot 0 0   &kp HYPER(Q)  &kp HYPER(W)  &kp HYPER(E)  &kp HYPER(R)  &kp HYPER(T)  &studio_unlock  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp F11  &kp F12
+&none            &kp HYPER(A)  &kp HYPER(S)  &kp HYPER(D)  &kp HYPER(F)  &kp HYPER(G)  &bt BT_SEL 2    &none         &none       &none         &none    &hold_bt_clr BT_CLR 0
+&hold_reset 0 0  &kp HYPER(Z)  &kp HYPER(X)  &kp HYPER(C)  &kp HYPER(V)  &kp HYPER(B)  &bt BT_SEL 0    &none         &none       &none         &none    &hold_reset 0 0
+                                             &trans        &trans        &trans        &trans          &trans        &trans
             >;
         };
 
