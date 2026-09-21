@@ -20,6 +20,33 @@
 };
 
 / {
+    behaviors {
+        // Destructive actions: only fire after a two second hold, a short tap does nothing.
+        hold_bt_clr: hold_bt_clr {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <2000>;
+            bindings = <&bt>, <&none>;
+        };
+
+        hold_boot: hold_boot {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <2000>;
+            bindings = <&bootloader>, <&none>;
+        };
+
+        hold_reset: hold_reset {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <2000>;
+            bindings = <&sys_reset>, <&none>;
+        };
+    };
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
@@ -65,10 +92,10 @@
         adjust_layer {
             display-name = "ADJ";
             bindings = <
-&bootloader  &kp RS(RA(RC(RG(Q))))  &kp RS(RA(RC(RG(W))))  &kp RS(RA(RC(RG(E))))  &kp RS(RA(RC(RG(R))))  &kp RS(RA(RC(RG(T))))  &studio_unlock  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp F11  &kp F12
-&none        &kp RS(RC(RA(RG(A))))  &kp RS(RA(RC(RG(S))))  &kp RS(RA(RC(RG(D))))  &kp RS(RA(RC(RG(F))))  &kp RS(RA(RC(RG(G))))  &bt BT_SEL 2    &none         &none       &none         &none    &none
-&sys_reset   &kp RS(RA(RC(RG(Z))))  &kp RS(RA(RC(RG(X))))  &kp RS(RA(RC(RG(C))))  &kp RS(RA(RC(RG(V))))  &kp RS(RA(RC(RG(B))))  &bt BT_SEL 0    &none         &none       &none         &none    &sys_reset
-                                                           &trans                 &trans                 &trans                 &trans          &trans        &trans
+&hold_boot 0 0   &kp RS(RA(RC(RG(Q))))  &kp RS(RA(RC(RG(W))))  &kp RS(RA(RC(RG(E))))  &kp RS(RA(RC(RG(R))))  &kp RS(RA(RC(RG(T))))  &studio_unlock  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp F11  &kp F12
+&none            &kp RS(RC(RA(RG(A))))  &kp RS(RA(RC(RG(S))))  &kp RS(RA(RC(RG(D))))  &kp RS(RA(RC(RG(F))))  &kp RS(RA(RC(RG(G))))  &bt BT_SEL 2    &none         &none       &none         &none    &hold_bt_clr BT_CLR 0
+&hold_reset 0 0  &kp RS(RA(RC(RG(Z))))  &kp RS(RA(RC(RG(X))))  &kp RS(RA(RC(RG(C))))  &kp RS(RA(RC(RG(V))))  &kp RS(RA(RC(RG(B))))  &bt BT_SEL 0    &none         &none       &none         &none    &hold_reset 0 0
+                                                               &trans                 &trans                 &trans                 &trans          &trans        &trans
             >;
         };
 
