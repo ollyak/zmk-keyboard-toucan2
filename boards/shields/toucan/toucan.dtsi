@@ -156,3 +156,12 @@
         };
     };
 };
+
+/*
+ * matrix_transform.h has no include guard and redefines RC() as RC(row, col),
+ * shadowing the right-control modifier for every overlay Zephyr concatenates
+ * after this one, the keymap included. The matrix map above is already
+ * expanded, so restore the modifier form here.
+ */
+#undef RC
+#define RC(keycode) APPLY_MODS(MOD_RCTL, keycode)
