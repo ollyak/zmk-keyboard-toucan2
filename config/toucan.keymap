@@ -3,10 +3,21 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define BASE 0
-#define NAV  1
-#define SYM  2
-#define ADJ  3
+#define DEF 0
+#define LWR 1
+#define RSE 2
+#define ADJ 3
+// Layer 4 is held automatically while a finger rests on the trackpad,
+// see `is_touching_processor` in boards/shields/toucan/toucan.dtsi
+#define MOU 4
+
+&lt {
+    quick-tap-ms = <200>;
+};
+
+&mt {
+    quick-tap-ms = <200>;
+};
 
 / {
     conditional_layers {
@@ -21,43 +32,43 @@
     keymap {
         compatible = "zmk,keymap";
 
-        base {
+        default_layer {
             display-name = "BASE";
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T      &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G      &kp H    &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B      &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &kp SPACE  &kp RET  &mo 2  &kp RALT
+&mt LCTRL ESC     &kp Q  &kp W  &kp E            &kp R               &kp T      &kp Y            &kp U                &kp I      &kp O    &kp P     &mt RIGHT_CONTROL LBKT
+&mt LEFT_ALT TAB  &kp A  &kp S  &kp D            &kp F               &kp G      &kp H            &kp J                &kp K      &kp L    &kp SEMI  &mt RIGHT_ALT SQT
+&kp LEFT_SHIFT    &kp Z  &kp X  &kp C            &kp V               &kp B      &kp N            &kp M                &kp COMMA  &kp DOT  &kp FSLH  &mt RIGHT_SHIFT BSLH
+                                &lt 2 BACKSPACE  &mt LEFT_GUI SPACE  &lt 1 RET  &lt 1 BACKSPACE  &mt RIGHT_GUI SPACE  &lt 2 RET
             >;
         };
 
-        nav {
-            display-name = "NAV";
+        lower_layer {
+            display-name = "LWR";
             bindings = <
-&kp TAB    &kp N1          &kp N2        &kp N3        &kp N4        &kp N5        &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&trans     &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT  &studio_unlock  &trans        &trans        &trans        &trans        &trans    &trans    &trans    &trans     &trans  &trans
-                                         &kp LGUI      &trans        &kp SPACE     &kp RET   &trans    &kp RALT
+&gresc              &kp F1    &kp F2  &kp F3    &kp F4    &kp F5     &kp F6     &kp F7    &kp F8    &kp F9    &kp F10   &kp RIGHT_BRACKET
+&mt LEFT_ALT GRAVE  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &mt RCTRL MINUS
+&trans              &kp N1    &kp N2  &kp N3    &kp N4    &kp N5     &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &mt RIGHT_SHIFT EQUAL
+                                      &trans    &trans    &trans     &trans     &trans    &trans
             >;
         };
 
-        sym {
-            display-name = "SYM";
+        raise_layer {
+            display-name = "RSE";
             bindings = <
-&kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS   &kp KP_MULTIPLY  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &trans    &trans  &trans    &trans    &trans     &kp MINUS  &kp EQUAL  &kp LBKT         &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans    &trans  &trans    &trans    &trans     &kp UNDER  &kp PLUS   &kp LBRC         &kp RBRC  &kp PIPE  &kp TILDE
-                             &kp LGUI  &trans    &kp SPACE  &kp RET    &trans     &kp RALT
+&trans              &kp KP_SLASH     &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp PG_UP          &kp HOME       &kp UP    &kp END     &kp PAGE_DOWN   &none
+&mt LEFT_ALT EQUAL  &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &kp LA(LEFT)       &kp LEFT       &kp DOWN  &kp RIGHT   &kp RA(RIGHT)   &trans
+&trans              &kp KP_N0        &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT    &kp LA(BACKSPACE)  &kp BACKSPACE  &none     &kp DELETE  &kp LA(DELETE)  &trans
+                                                &trans     &trans     &trans        &trans             &trans         &trans
             >;
         };
 
-        adj {
+        adjust_layer {
             display-name = "ADJ";
             bindings = <
-&kp TAB    &trans  &kp F7  &kp F8    &kp F9   &kp F12    &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &trans  &trans  &kp BSPC
-&kp LCTRL  &trans  &kp F4  &kp F5    &kp F6   &kp F11    &trans        &trans      &trans        &trans  &trans  &trans
-&kp LSHFT  &trans  &kp F1  &kp F2    &kp F3   &kp F10    &trans        &trans      &trans        &trans  &trans  &trans
-                           &kp LGUI  &mo NAV  &kp SPACE  &kp RET       &mo 2       &kp RALT
+&bootloader  &kp RS(RA(RC(RG(Q))))  &kp RS(RA(RC(RG(W))))  &kp RS(RA(RC(RG(E))))  &kp RS(RA(RC(RG(R))))  &kp RS(RA(RC(RG(T))))  &studio_unlock  &none   &none   &none  &none  &none
+&none        &kp RS(RC(RA(RG(A))))  &kp RS(RA(RC(RG(S))))  &kp RS(RA(RC(RG(D))))  &kp RS(RA(RC(RG(F))))  &kp RS(RA(RC(RG(G))))  &bt BT_SEL 2    &none   &none   &none  &none  &none
+&sys_reset   &kp RS(RA(RC(RG(Z))))  &kp RS(RA(RC(RG(X))))  &kp RS(RA(RC(RG(C))))  &kp RS(RA(RC(RG(V))))  &kp RS(RA(RC(RG(B))))  &bt BT_SEL 0    &none   &none   &none  &none  &sys_reset
+                                                           &trans                 &trans                 &trans                 &trans          &trans  &trans
             >;
         };
 
