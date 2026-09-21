@@ -35,6 +35,10 @@
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 1, 13)>,
                     <NRF_PSEL(TWIM_SCL, 1, 15)>;
+            // Keep the bus pulled up while the pins are parked. Without this SDA/SCL float
+            // during low-power transitions and a transaction straddling the switch can leave
+            // the bus latched low, which no longer recovers.
+            bias-pull-up;
             low-power-enable;
         };
     };
@@ -42,7 +46,10 @@
 
 &i2c0 {
    status = "okay";
-    clock-frequency = <I2C_BITRATE_FAST>;
+    // Internal nRF52 pull-ups are ~13k. Fast-mode 400kHz wants ~1-2k; at 100kHz the
+    // internal resistors are enough and a stretched/NACK'd transfer is far less likely
+    // to leave SDA stuck, which previously wedged the right half.
+    clock-frequency = <I2C_BITRATE_STANDARD>;
     pinctrl-0 = <&i2c0_azoteq_default>;
     pinctrl-1 = <&i2c0_azoteq_sleep>;
     pinctrl-names = "default", "sleep";
