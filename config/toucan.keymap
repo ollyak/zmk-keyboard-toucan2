@@ -97,7 +97,7 @@
             display-name = "ADJ";
             bindings = <
 &hold_boot 0 0   &kp HYPER(Q)  &kp HYPER(W)  &kp HYPER(E)  &kp HYPER(R)  &kp HYPER(T)  &studio_unlock  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp F11  &kp F12
-&none            &kp HYPER(A)  &kp HYPER(S)  &kp HYPER(D)  &kp HYPER(F)  &kp HYPER(G)  &bt BT_SEL 2    &none         &none       &none         &none    &hold_bt_clr BT_CLR 0
+&none            &kp HYPER(A)  &kp HYPER(S)  &kp HYPER(D)  &kp HYPER(F)  &kp HYPER(G)  &bt BT_SEL 2    &none         &none       &none         &none    &hold_bt_clr BT_CLR
 &hold_reset 0 0  &kp HYPER(Z)  &kp HYPER(X)  &kp HYPER(C)  &kp HYPER(V)  &kp HYPER(B)  &bt BT_SEL 0    &none         &none       &none         &none    &hold_reset 0 0
                                              &trans        &trans        &trans        &trans          &trans        &trans
             >;
