@@ -83,8 +83,8 @@
             display-name = "RSE";
             bindings = <
 &trans              &kp KP_SLASH     &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp PG_UP          &kp HOME       &kp UP    &kp END     &kp PAGE_DOWN   &none
-&mt LEFT_ALT EQUAL  &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &kp LA(LEFT)       &kp LEFT       &kp DOWN  &kp RIGHT   &kp RA(RIGHT)   &trans
-&trans              &kp KP_N0        &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT    &kp LA(BACKSPACE)  &kp BACKSPACE  &none     &kp DELETE  &kp LA(DELETE)  &trans
+&mt LEFT_ALT EQUAL  &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &kp LA(LEFT)       &kp LEFT       &kp DOWN  &kp RIGHT   &kp RA(RIGHT)   &RIGHT_ALT
+&trans              &kp KP_N0        &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT    &kp LA(BACKSPACE)  &kp BACKSPACE  &none     &kp DELETE  &kp LA(DELETE)  &RIGHT_SHIFT
                                                 &trans     &trans     &trans        &trans             &trans         &trans
             >;
         };
@@ -93,8 +93,8 @@
             display-name = "ADJ";
             bindings = <
 &hold_boot 0 0   &kp RS(RA(RC(RG(Q))))  &kp RS(RA(RC(RG(W))))  &kp RS(RA(RC(RG(E))))  &kp RS(RA(RC(RG(R))))  &kp RS(RA(RC(RG(T))))  &studio_unlock  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP  &kp F11  &kp F12
-&none            &kp RS(RA(RC(RG(A))))  &kp RS(RA(RC(RG(S))))  &kp RS(RA(RC(RG(D))))  &kp RS(RA(RC(RG(F))))  &kp RS(RA(RC(RG(G))))  &bt BT_SEL 2    &none         &none       &none         &none    &hold_bt_clr BT_CLR
-&hold_reset 0 0  &kp RS(RA(RC(RG(Z))))  &kp RS(RA(RC(RG(X))))  &kp RS(RA(RC(RG(C))))  &kp RS(RA(RC(RG(V))))  &kp RS(RA(RC(RG(B))))  &bt BT_SEL 0    &none         &none       &none         &none    &hold_reset 0 0
+&none            &kp RS(RA(RC(RG(A))))  &kp RS(RA(RC(RG(S))))  &kp RS(RA(RC(RG(D))))  &kp RS(RA(RC(RG(F))))  &kp RS(RA(RC(RG(G))))  &bt BT_SEL 2    &F17          &F18        &F19          &F20     &hold_bt_clr BT_CLR
+&hold_reset 0 0  &kp RS(RA(RC(RG(Z))))  &kp RS(RA(RC(RG(X))))  &kp RS(RA(RC(RG(C))))  &kp RS(RA(RC(RG(V))))  &kp RS(RA(RC(RG(B))))  &bt BT_SEL 0    &F21          &F22        &F23          &F24     &hold_reset 0 0
                                                                &trans                 &trans                 &trans                 &trans          &trans        &trans
             >;
         };
